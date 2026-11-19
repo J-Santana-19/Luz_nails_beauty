@@ -770,7 +770,8 @@ button {
 @media (min-width: 1024px) {
   .appointment-grid {
     grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-    gap: 48px;
+    gap: 56px;
+    align-items: center;
   }
 }
 
