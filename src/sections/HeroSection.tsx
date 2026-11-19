@@ -43,11 +43,11 @@ export function HeroSection() {
             <span>Uñas • Pedicure • Maquillaje • Pestañas • Cejas • Depilación</span>
           </div>
         </div>
+      </div>
 
-        <div className="hero-media" aria-label="Espacio reservado para imagen principal">
-          <ImagePlaceholder slot={primarySlot} theme="dark" />
-          <span className="hero-media__fade" aria-hidden="true" />
-        </div>
+      <div className="hero-media" aria-label="Espacio reservado para imagen principal">
+        <ImagePlaceholder slot={primarySlot} theme="dark" />
+        <span className="hero-media__fade" aria-hidden="true" />
       </div>
     </section>
   );

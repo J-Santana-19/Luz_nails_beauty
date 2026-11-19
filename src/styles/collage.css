@@ -244,25 +244,47 @@
 }
 
 /* ============================================================================
- * 1. HERO MEDIA CON DIFUMINADO (Sección Inicio — una sola imagen derecha)
+ * 1. HERO MEDIA CON DIFUMINADO (Cobertura total de la sección derecha)
  * ============================================================================ */
 .hero-media {
   position: relative;
   width: 100%;
   min-width: 0;
-  border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
 .hero-media .placeholder-card {
   aspect-ratio: 4 / 3;
-  border-color: rgba(245, 200, 217, 0.14);
+  border-radius: 0;
+  border: 0;
 }
 
-@media (min-width: 1024px) {
+.hero-media .placeholder-card__frame {
+  inset: 16px;
+}
+
+@media (min-width: 768px) {
+  .hero-media {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 62%;
+    z-index: 1;
+  }
+
   .hero-media .placeholder-card {
-    aspect-ratio: 5 / 4;
-    min-height: 430px;
+    height: 100%;
+    aspect-ratio: auto;
+    padding: 28px 36px;
+  }
+
+  .hero-media .placeholder-card__top {
+    justify-content: flex-end;
+  }
+
+  .hero-media .placeholder-card__bottom {
+    justify-content: flex-end;
   }
 }
 
@@ -273,18 +295,31 @@
   z-index: 2;
   background:
     linear-gradient(
-      90deg,
-      #171317 0%,
-      rgba(23, 19, 23, 0.68) 20%,
-      rgba(23, 19, 23, 0) 56%
-    ),
-    linear-gradient(
       180deg,
-      rgba(23, 19, 23, 0.45) 0%,
-      rgba(23, 19, 23, 0) 24%,
-      rgba(23, 19, 23, 0) 70%,
-      #171317 100%
+      #171317 0%,
+      rgba(23, 19, 23, 0.3) 24%,
+      rgba(23, 19, 23, 0) 65%
     );
+}
+
+@media (min-width: 768px) {
+  .hero-media__fade {
+    background:
+      linear-gradient(
+        90deg,
+        #171317 0%,
+        rgba(23, 19, 23, 0.88) 18%,
+        rgba(23, 19, 23, 0.42) 42%,
+        rgba(23, 19, 23, 0) 72%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(23, 19, 23, 0.45) 0%,
+        rgba(23, 19, 23, 0) 20%,
+        rgba(23, 19, 23, 0) 80%,
+        rgba(23, 19, 23, 0.55) 100%
+      );
+  }
 }
 
 /* ============================================================================
