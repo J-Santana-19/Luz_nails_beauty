@@ -9,7 +9,6 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     description:
       'Descubre diferentes estilos, diseños y acabados realizados con dedicación a cada detalle.',
     placeholderId: 'PH-SRV-01',
-    imageUrl: 'images/servicios/manicure/manicure-03.webp',
     aspectRatio: '16:10',
     desktopSpan: 5,
     isActive: true,

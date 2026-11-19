@@ -25,12 +25,12 @@ describe('Luz Beauty Studio — Primera Etapa Visual (Placeholders y Collages)',
       expect(screen.getAllByText(name).length).toBeGreaterThan(0);
     }
 
-    // Deben mostrarse únicamente las 4 imágenes reales de Manicure sin repetir ninguna
+    // Deben mostrarse únicamente las 3 imágenes reales únicas en <main> sin repetir ninguna
     const mainImages = Array.from(container.querySelectorAll('main img')).map((img) =>
       img.getAttribute('src'),
     );
-    expect(mainImages).toHaveLength(4);
-    expect(new Set(mainImages).size).toBe(4);
+    expect(mainImages).toHaveLength(3);
+    expect(new Set(mainImages).size).toBe(3);
     // El logotipo oficial de la marca sí se muestra en header y footer
     expect(screen.getAllByAltText('Logotipo Luz Beauty Studio').length).toBeGreaterThanOrEqual(2);
   });
