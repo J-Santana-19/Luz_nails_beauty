@@ -18,6 +18,14 @@ interface ImagePlaceholderProps {
   showExpandHint?: boolean;
 }
 
+function resolveMediaUrl(imageUrl: string): string {
+  if (/^https?:\/\//i.test(imageUrl)) {
+    return imageUrl;
+  }
+  const base = import.meta.env.BASE_URL || '/';
+  return `${base}${imageUrl.replace(/^\/+/, '')}`;
+}
+
 export function ImagePlaceholder({
   slot,
   theme = 'light',
@@ -26,9 +34,11 @@ export function ImagePlaceholder({
   showExpandHint = false,
 }: ImagePlaceholderProps) {
   const ratioClass = RATIO_CLASS_MAP[slot.aspectRatio];
+  const hasImage = Boolean(slot.imageUrl);
   const cardClasses = [
     'placeholder-card',
     theme === 'dark' ? 'placeholder-card--dark' : 'placeholder-card--light',
+    hasImage ? 'placeholder-card--has-image' : '',
     ratioClass,
     onSelect ? 'placeholder-card--interactive' : '',
     className,
@@ -38,19 +48,36 @@ export function ImagePlaceholder({
 
   const content = (
     <>
-      <span className="placeholder-card__frame" aria-hidden="true" />
+      {slot.imageUrl ? (
+        <>
+          <img
+            src={resolveMediaUrl(slot.imageUrl)}
+            alt={slot.title}
+            loading="lazy"
+            className="placeholder-card__img"
+          />
+          <span className="placeholder-card__scrim" aria-hidden="true" />
+        </>
+      ) : (
+        <span className="placeholder-card__frame" aria-hidden="true" />
+      )}
+
       <div className="placeholder-card__top">
         <span className="placeholder-card__badge">{slot.categoryName}</span>
-        <span className="placeholder-card__ratio">{slot.aspectRatio}</span>
+        {!hasImage ? (
+          <span className="placeholder-card__ratio">{slot.aspectRatio}</span>
+        ) : null}
       </div>
 
-      <div className="placeholder-card__center">
-        <span className="placeholder-card__silhouette">
-          <PlaceholderFrameIcon size={22} />
-        </span>
-        <span className="placeholder-card__label">{slot.temporaryLabel}</span>
-        <span className="placeholder-card__subtitle">{slot.subtitle}</span>
-      </div>
+      {!hasImage ? (
+        <div className="placeholder-card__center">
+          <span className="placeholder-card__silhouette">
+            <PlaceholderFrameIcon size={22} />
+          </span>
+          <span className="placeholder-card__label">{slot.temporaryLabel}</span>
+          <span className="placeholder-card__subtitle">{slot.subtitle}</span>
+        </div>
+      ) : null}
 
       <div className="placeholder-card__bottom">
         <span>{slot.title}</span>
@@ -75,7 +102,9 @@ export function ImagePlaceholder({
   return (
     <article
       className={cardClasses}
-      aria-label={`Espacio reservado: ${slot.title}`}
+      aria-label={
+        hasImage ? slot.title : `Espacio reservado: ${slot.title}`
+      }
     >
       {content}
     </article>

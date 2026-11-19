@@ -8,7 +8,7 @@ import type {
 export const HERO_PLACEHOLDERS: PlaceholderSlot[] = [
   {
     id: 'PH-HERO-01',
-    title: 'Portada principal del estudio',
+    title: 'Manicure elegante tono vino — Luz Beauty Studio',
     temporaryLabel: 'Imagen principal',
     subtitle: 'Espacio reservado • Fotografía protagonista de portada',
     categorySlug: 'unas',
@@ -16,7 +16,7 @@ export const HERO_PLACEHOLDERS: PlaceholderSlot[] = [
     aspectRatio: '4:5',
     role: 'protagonist',
     isPublished: true,
-    imageUrl: null,
+    imageUrl: 'images/servicios/manicure/manicure-04.webp',
   },
   {
     id: 'PH-HERO-02',
@@ -35,7 +35,7 @@ export const HERO_PLACEHOLDERS: PlaceholderSlot[] = [
 export const MAGAZINE_PLACEHOLDERS: PlaceholderSlot[] = [
   {
     id: 'G-01',
-    title: 'Trabajo protagonista — Uñas',
+    title: 'Manicure rojo brillante — Uñas',
     temporaryLabel: 'Trabajo destacado',
     subtitle: 'Espacio reservado • Pieza vertical principal',
     categorySlug: 'unas',
@@ -44,7 +44,7 @@ export const MAGAZINE_PLACEHOLDERS: PlaceholderSlot[] = [
     role: 'protagonist',
     magazineSlot: 'G-01',
     isPublished: true,
-    imageUrl: null,
+    imageUrl: 'images/servicios/manicure/manicure-01.webp',
   },
   {
     id: 'G-02',
@@ -100,7 +100,7 @@ export const MAGAZINE_PLACEHOLDERS: PlaceholderSlot[] = [
   },
   {
     id: 'G-06',
-    title: 'Acabado delicado — Uñas',
+    title: 'Uñas almendradas con detalle dorado — Uñas',
     temporaryLabel: 'Detalle cuadrado',
     subtitle: 'Espacio reservado • Primer plano de diseño',
     categorySlug: 'unas',
@@ -109,7 +109,7 @@ export const MAGAZINE_PLACEHOLDERS: PlaceholderSlot[] = [
     role: 'detail',
     magazineSlot: 'G-06',
     isPublished: true,
-    imageUrl: null,
+    imageUrl: 'images/servicios/manicure/manicure-02.webp',
   },
   {
     id: 'G-07',

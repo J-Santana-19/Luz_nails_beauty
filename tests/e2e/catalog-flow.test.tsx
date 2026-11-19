@@ -18,13 +18,13 @@ describe('Flujos End-to-End de Catálogo Público y Panel Admin', () => {
 
     const dialog = screen.getByRole('dialog');
     expect(dialog).toBeInTheDocument();
-    expect(within(dialog).getByRole('heading', { name: 'Trabajo protagonista — Uñas' })).toBeInTheDocument();
+    expect(within(dialog).getByRole('heading', { name: 'Manicure rojo brillante — Uñas' })).toBeInTheDocument();
 
     fireEvent.click(within(dialog).getByRole('button', { name: /Siguiente/i }));
     expect(within(dialog).getByRole('heading', { name: 'Detalle de cuidado — Pedicure' })).toBeInTheDocument();
 
     fireEvent.click(within(dialog).getByRole('button', { name: /Anterior/i }));
-    expect(within(dialog).getByRole('heading', { name: 'Trabajo protagonista — Uñas' })).toBeInTheDocument();
+    expect(within(dialog).getByRole('heading', { name: 'Manicure rojo brillante — Uñas' })).toBeInTheDocument();
 
     fireEvent.keyDown(window, { key: 'Escape' });
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();

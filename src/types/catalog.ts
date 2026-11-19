@@ -19,6 +19,7 @@ export interface ServiceCategory {
   slug: CategorySlug;
   description: string;
   placeholderId: string;
+  imageUrl?: string | null;
   aspectRatio: AspectRatio;
   desktopSpan: 3 | 4 | 5;
   isActive: boolean;
@@ -37,7 +38,7 @@ export interface PlaceholderSlot {
   magazineSlot?: MagazineSlotId;
   spotlightSlot?: SpotlightSlotId;
   isPublished: boolean;
-  imageUrl: null;
+  imageUrl: string | null;
 }
 
 export type PreferredSchedule =

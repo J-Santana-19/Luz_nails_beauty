@@ -71,9 +71,20 @@ export function resolvePublicGalleryItems(
 
   const baseSpotlight = SPOTLIGHT_PLACEHOLDERS.filter(
     (item) => item.isPublished && item.categorySlug === filter,
-  ).map((slot) =>
-    categoryName ? { ...slot, categoryName } : slot,
-  );
+  ).map((slot) => {
+    const base = categoryName ? { ...slot, categoryName } : { ...slot };
+    if (filter === 'unas') {
+      if (slot.spotlightSlot === 'C-03') {
+        const g01 = publishedInCategory.find((item) => item.id === 'G-01');
+        if (g01) return { ...base, title: g01.title, imageUrl: g01.imageUrl };
+      }
+      if (slot.spotlightSlot === 'C-01') {
+        const g06 = publishedInCategory.find((item) => item.id === 'G-06');
+        if (g06) return { ...base, title: g06.title, imageUrl: g06.imageUrl };
+      }
+    }
+    return base;
+  });
 
   const customAdditions = publishedInCategory.filter(
     (item) => !item.magazineSlot,

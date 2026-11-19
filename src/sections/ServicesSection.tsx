@@ -60,7 +60,7 @@ export function ServicesSection({
                 aspectRatio: category.aspectRatio,
                 role: category.desktopSpan === 5 ? 'panoramic' : 'secondary',
                 isPublished: true,
-                imageUrl: null,
+                imageUrl: category.imageUrl ?? null,
               };
 
               return (

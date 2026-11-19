@@ -72,10 +72,12 @@ describe('catalog.service (etapa placeholders)', () => {
     ]);
   });
 
-  it('devuelve los 7 slots del collage Magazine Spread con proporciones variadas e imageUrl null', () => {
+  it('devuelve los 7 slots del collage Magazine Spread con proporciones variadas y sin repetir imágenes', () => {
     const items = getGalleryPlaceholders('todos');
     expect(items).toHaveLength(7);
-    expect(items.every((item) => item.imageUrl === null)).toBe(true);
+
+    const realUrls = items.map((item) => item.imageUrl).filter(Boolean);
+    expect(new Set(realUrls).size).toBe(realUrls.length);
 
     const uniqueRatios = new Set(items.map((item) => item.aspectRatio));
     expect(uniqueRatios.size).toBeGreaterThanOrEqual(4);
