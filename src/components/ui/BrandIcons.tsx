@@ -6,33 +6,24 @@ interface IconProps {
 }
 
 export function BrandMonogram({ size = 40 }: IconProps) {
+  const logoSrc = `${import.meta.env.BASE_URL}images/branding/logo-ls.webp`;
+
   return (
-    <svg
+    <img
+      src={logoSrc}
+      alt="Logotipo Luz Beauty Studio"
       width={size}
       height={size}
-      viewBox="0 0 48 48"
-      fill="none"
-      aria-hidden="true"
-    >
-      <circle cx="24" cy="24" r="22" stroke="#E83E78" strokeWidth="1.5" />
-      <circle cx="24" cy="24" r="18.5" stroke="#F5C8D9" strokeWidth="0.75" strokeOpacity="0.6" />
-      <text
-        x="24"
-        y="30"
-        textAnchor="middle"
-        fill="#FFFFFF"
-        fontFamily="Cormorant Garamond, Georgia, serif"
-        fontSize="20"
-        fontStyle="italic"
-        fontWeight="600"
-      >
-        LS
-      </text>
-      <path
-        d="M36 12L37 14.5L39.5 15.5L37 16.5L36 19L35 16.5L32.5 15.5L35 14.5L36 12Z"
-        fill="#E83E78"
-      />
-    </svg>
+      style={{
+        width: `${size}px`,
+        height: `${size}px`,
+        borderRadius: '9999px',
+        objectFit: 'cover',
+        display: 'block',
+        backgroundColor: '#000000',
+        flexShrink: 0,
+      }}
+    />
   );
 }
 

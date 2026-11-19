@@ -25,8 +25,10 @@ describe('Luz Beauty Studio — Primera Etapa Visual (Placeholders y Collages)',
       expect(screen.getAllByText(name).length).toBeGreaterThan(0);
     }
 
-    // Regla principal: cero <img> reales, de stock o generadas por IA en esta etapa
-    expect(container.querySelectorAll('img')).toHaveLength(0);
+    // Regla principal: cero <img> reales, de stock o generadas por IA en el contenido de catálogo (<main>)
+    expect(container.querySelectorAll('main img')).toHaveLength(0);
+    // El logotipo oficial de la marca sí se muestra en header y footer
+    expect(screen.getAllByAltText('Logotipo Luz Beauty Studio').length).toBeGreaterThanOrEqual(2);
   });
 
   it('alterna entre Magazine Spread (7 espacios) y Category Spotlight (5 espacios) al filtrar la galería', () => {
