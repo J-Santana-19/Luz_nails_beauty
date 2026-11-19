@@ -476,7 +476,7 @@ button {
   overflow: hidden;
   background-color: var(--color-bg-dark);
   color: var(--color-white);
-  padding-block: 44px 0;
+  padding-block: 48px 52px;
 }
 
 @media (min-width: 768px) {
@@ -505,13 +505,6 @@ button {
   align-items: flex-start;
   gap: 20px;
   max-width: 600px;
-  padding-bottom: 32px;
-}
-
-@media (min-width: 768px) {
-  .hero-content {
-    padding-bottom: 0;
-  }
 }
 
 .hero-eyebrow {

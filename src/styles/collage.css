@@ -286,23 +286,27 @@
 }
 
 /* ============================================================================
- * 1. HERO MEDIA CON DIFUMINADO (Cobertura total de la sección derecha)
+ * 1. HERO MEDIA CON DIFUMINADO (Cobertura total en móvil y derecha en PC)
  * ============================================================================ */
 .hero-media {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
+  height: 100%;
   min-width: 0;
   overflow: hidden;
+  z-index: 1;
 }
 
 .hero-media .placeholder-card {
-  aspect-ratio: 16 / 10;
+  height: 100%;
+  aspect-ratio: auto;
   border-radius: 0;
   border: 0;
 }
 
 .hero-media .placeholder-card__img {
-  object-position: 60% center;
+  object-position: 62% 55%;
 }
 
 .hero-media .placeholder-card__frame {
@@ -311,17 +315,11 @@
 
 @media (min-width: 768px) {
   .hero-media {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    left: auto;
     width: 62%;
-    z-index: 1;
   }
 
   .hero-media .placeholder-card {
-    height: 100%;
-    aspect-ratio: auto;
     padding: 28px 36px;
   }
 
@@ -346,10 +344,10 @@
   background:
     linear-gradient(
       180deg,
-      #171317 0%,
-      rgba(23, 19, 23, 0.35) 26%,
-      rgba(23, 19, 23, 0) 58%,
-      rgba(23, 19, 23, 0.55) 100%
+      rgba(23, 19, 23, 0.88) 0%,
+      rgba(23, 19, 23, 0.74) 45%,
+      rgba(23, 19, 23, 0.56) 78%,
+      rgba(23, 19, 23, 0.82) 100%
     );
 }
 
