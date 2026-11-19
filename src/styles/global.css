@@ -376,10 +376,14 @@ button {
 
 .mobile-drawer {
   position: fixed;
-  inset: var(--header-height-mobile) 0 0 0;
-  z-index: 39;
+  top: var(--header-height-mobile);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(100dvh - var(--header-height-mobile));
+  z-index: 45;
   background-color: var(--color-bg-dark);
-  padding: 32px 24px;
+  padding: 28px 24px 36px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

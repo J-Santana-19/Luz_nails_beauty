@@ -27,47 +27,49 @@ export function AppHeader() {
   const handleCloseDrawer = () => setIsDrawerOpen(false);
 
   return (
-    <header className="site-header">
-      <div className="container site-header__inner">
-        <a href="#inicio" className="brand-lockup" aria-label="Luz Beauty Studio — Ir al inicio">
-          <BrandMonogram size={42} />
-          <span className="brand-lockup__text">
-            <span className="brand-lockup__name">
-              Luz Beauty <em>Studio</em>
+    <>
+      <header className="site-header">
+        <div className="container site-header__inner">
+          <a href="#inicio" className="brand-lockup" aria-label="Luz Beauty Studio — Ir al inicio">
+            <BrandMonogram size={42} />
+            <span className="brand-lockup__text">
+              <span className="brand-lockup__name">
+                Luz Beauty <em>Studio</em>
+              </span>
+              <span className="brand-lockup__tag">{INSTAGRAM_HANDLE}</span>
             </span>
-            <span className="brand-lockup__tag">{INSTAGRAM_HANDLE}</span>
-          </span>
-        </a>
+          </a>
 
-        <nav className="desktop-nav" aria-label="Navegación principal">
-          {NAV_ITEMS.map((item) => (
-            <a key={item.href} href={item.href} className="desktop-nav__link">
-              {item.label}
-            </a>
-          ))}
-        </nav>
+          <nav className="desktop-nav" aria-label="Navegación principal">
+            {NAV_ITEMS.map((item) => (
+              <a key={item.href} href={item.href} className="desktop-nav__link">
+                {item.label}
+              </a>
+            ))}
+          </nav>
 
-        <a
-          href={directWhatsAppUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn--primary header-cta"
-        >
-          <WhatsAppIcon size={18} />
-          WhatsApp
-        </a>
+          <a
+            href={directWhatsAppUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn--primary header-cta"
+          >
+            <WhatsAppIcon size={18} />
+            WhatsApp
+          </a>
 
-        <button
-          type="button"
-          className="mobile-menu-toggle"
-          aria-label={isDrawerOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
-          aria-expanded={isDrawerOpen}
-          aria-controls="mobile-navigation-drawer"
-          onClick={() => setIsDrawerOpen((prev) => !prev)}
-        >
-          {isDrawerOpen ? <CloseIcon size={22} /> : <MenuIcon size={22} />}
-        </button>
-      </div>
+          <button
+            type="button"
+            className="mobile-menu-toggle"
+            aria-label={isDrawerOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
+            aria-expanded={isDrawerOpen}
+            aria-controls="mobile-navigation-drawer"
+            onClick={() => setIsDrawerOpen((prev) => !prev)}
+          >
+            {isDrawerOpen ? <CloseIcon size={22} /> : <MenuIcon size={22} />}
+          </button>
+        </div>
+      </header>
 
       {isDrawerOpen ? (
         <div
@@ -104,6 +106,6 @@ export function AppHeader() {
           </a>
         </div>
       ) : null}
-    </header>
+    </>
   );
 }

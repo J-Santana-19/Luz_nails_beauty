@@ -81,4 +81,20 @@ describe('Luz Beauty Studio — Primera Etapa Visual (Placeholders y Collages)',
     expect(openSpy.mock.calls[0][0]).toContain('https://wa.me/');
     expect(screen.getByText(/Solicitud preparada para WhatsApp/i)).toBeInTheDocument();
   });
+
+  it('abre el menú hamburguesa móvil con todas las secciones de navegación', () => {
+    render(<App />);
+
+    const toggle = screen.getByRole('button', { name: /Abrir menú de navegación/i });
+    fireEvent.click(toggle);
+
+    const drawer = screen.getByRole('dialog', { name: /Menú móvil/i });
+    expect(drawer).toBeInTheDocument();
+    expect(drawer).toHaveTextContent('Inicio');
+    expect(drawer).toHaveTextContent('Servicios');
+    expect(drawer).toHaveTextContent('Galería');
+    expect(drawer).toHaveTextContent('Solicitar cita');
+    expect(drawer).toHaveTextContent('Preguntas frecuentes');
+    expect(drawer).toHaveTextContent('Contacto');
+  });
 });
