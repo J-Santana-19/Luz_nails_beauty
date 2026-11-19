@@ -296,9 +296,13 @@
 }
 
 .hero-media .placeholder-card {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   border-radius: 0;
   border: 0;
+}
+
+.hero-media .placeholder-card__img {
+  object-position: 60% center;
 }
 
 .hero-media .placeholder-card__frame {
@@ -321,6 +325,10 @@
     padding: 28px 36px;
   }
 
+  .hero-media .placeholder-card__img {
+    object-position: 55% center;
+  }
+
   .hero-media .placeholder-card__top {
     justify-content: flex-end;
   }
@@ -339,8 +347,9 @@
     linear-gradient(
       180deg,
       #171317 0%,
-      rgba(23, 19, 23, 0.3) 24%,
-      rgba(23, 19, 23, 0) 65%
+      rgba(23, 19, 23, 0.35) 26%,
+      rgba(23, 19, 23, 0) 58%,
+      rgba(23, 19, 23, 0.55) 100%
     );
 }
 
