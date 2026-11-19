@@ -243,53 +243,48 @@
   color: var(--color-primary-soft);
 }
 
-/* Ajuste compacto para tarjetas secundarias pequeñas del Hero y Tríptico */
-.hero-collage__secondary .placeholder-card__subtitle,
-.appointment-triptych .placeholder-card__subtitle {
-  display: none;
-}
-
-.appointment-triptych .placeholder-card__silhouette,
-.hero-collage__secondary .placeholder-card__silhouette {
-  width: 32px;
-  height: 32px;
-}
-
-.appointment-triptych .placeholder-card__label,
-.hero-collage__secondary .placeholder-card__label {
-  font-size: clamp(15px, 1.5vw, 19px);
-}
-
 /* ============================================================================
- * 1. HERO DIPTYCH (Sección Inicio — sin colisión de textos)
+ * 1. HERO MEDIA CON DIFUMINADO (Sección Inicio — una sola imagen derecha)
  * ============================================================================ */
-.hero-collage {
-  display: grid;
-  grid-template-columns: minmax(0, 1.22fr) minmax(0, 0.88fr);
-  gap: 14px;
-  align-items: end;
+.hero-media {
+  position: relative;
   width: 100%;
   min-width: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 
-.hero-collage__primary,
-.hero-collage__secondary {
-  min-width: 0;
+.hero-media .placeholder-card {
+  aspect-ratio: 4 / 3;
+  border-color: rgba(245, 200, 217, 0.14);
 }
 
-.hero-collage__secondary {
-  margin-bottom: 16px;
-}
-
-@media (min-width: 768px) {
-  .hero-collage {
-    gap: 20px;
+@media (min-width: 1024px) {
+  .hero-media .placeholder-card {
+    aspect-ratio: 5 / 4;
+    min-height: 430px;
   }
+}
 
-  .hero-collage__secondary {
-    margin-bottom: 28px;
-    box-shadow: var(--shadow-card);
-  }
+.hero-media__fade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    linear-gradient(
+      90deg,
+      #171317 0%,
+      rgba(23, 19, 23, 0.68) 20%,
+      rgba(23, 19, 23, 0) 56%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(23, 19, 23, 0.45) 0%,
+      rgba(23, 19, 23, 0) 24%,
+      rgba(23, 19, 23, 0) 70%,
+      #171317 100%
+    );
 }
 
 /* ============================================================================
@@ -542,4 +537,17 @@
 
 .appointment-triptych__wide {
   grid-column: span 2;
+}
+
+.appointment-triptych .placeholder-card__subtitle {
+  display: none;
+}
+
+.appointment-triptych .placeholder-card__silhouette {
+  width: 32px;
+  height: 32px;
+}
+
+.appointment-triptych .placeholder-card__label {
+  font-size: clamp(15px, 1.5vw, 19px);
 }

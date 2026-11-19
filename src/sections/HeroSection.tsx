@@ -7,7 +7,7 @@ import {
 } from '../services/whatsapp.service';
 
 export function HeroSection() {
-  const [primarySlot, secondarySlot] = getHeroPlaceholders();
+  const [primarySlot] = getHeroPlaceholders();
   const whatsappUrl = buildWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE);
 
   return (
@@ -44,13 +44,9 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="hero-collage" aria-label="Composición editorial de portada">
-          <div className="hero-collage__primary">
-            <ImagePlaceholder slot={primarySlot} theme="dark" />
-          </div>
-          <div className="hero-collage__secondary">
-            <ImagePlaceholder slot={secondarySlot} theme="dark" />
-          </div>
+        <div className="hero-media" aria-label="Espacio reservado para imagen principal">
+          <ImagePlaceholder slot={primarySlot} theme="dark" />
+          <span className="hero-media__fade" aria-hidden="true" />
         </div>
       </div>
     </section>
