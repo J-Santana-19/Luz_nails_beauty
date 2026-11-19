@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   buildWhatsAppUrl,
   DEFAULT_WHATSAPP_MESSAGE,
@@ -22,13 +22,24 @@ const NAV_ITEMS = [
 
 export function AppHeader() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const directWhatsAppUrl = buildWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 24);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleCloseDrawer = () => setIsDrawerOpen(false);
 
   return (
     <>
-      <header className="site-header">
+      <header className={`site-header ${isScrolled ? 'site-header--scrolled' : ''}`}>
         <div className="container site-header__inner">
           <a href="#inicio" className="brand-lockup" aria-label="Luz Beauty Studio — Ir al inicio">
             <BrandMonogram size={42} />
@@ -75,7 +86,7 @@ export function AppHeader() {
       {isDrawerOpen ? (
         <div
           id="mobile-navigation-drawer"
-          className="mobile-drawer"
+          className={`mobile-drawer ${isScrolled ? 'mobile-drawer--scrolled' : ''}`}
           role="dialog"
           aria-label="Menú móvil"
         >
