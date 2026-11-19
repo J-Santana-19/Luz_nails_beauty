@@ -87,7 +87,13 @@ button {
 
 @media (min-width: 1024px) {
   .container {
-    padding-inline: 32px;
+    padding-inline: 36px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding-inline: 48px;
   }
 }
 
@@ -429,6 +435,12 @@ button {
   }
 }
 
+@media (min-width: 1280px) {
+  .hero-grid {
+    gap: 72px;
+  }
+}
+
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -646,7 +658,7 @@ button {
 @media (min-width: 768px) {
   .filter-bar {
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     overflow-x: visible;
   }
 }
@@ -856,8 +868,8 @@ button {
 
 @media (min-width: 1024px) {
   .faq-layout {
-    grid-template-columns: 0.78fr 1.22fr;
-    gap: 56px;
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+    gap: 72px;
     align-items: start;
   }
 }

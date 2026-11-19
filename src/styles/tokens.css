@@ -35,7 +35,7 @@
 
   /* Transiciones y Layout */
   --transition-base: 180ms ease-out;
-  --container-max: 1240px;
+  --container-max: 1560px;
   --header-height-mobile: 64px;
   --header-height-desktop: 80px;
 }

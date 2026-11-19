@@ -74,7 +74,7 @@ export function GallerySection({
           title="Nuestros"
           highlightWord="Trabajos"
           subtitle="Resultados que hablan por sí solos. Explora nuestras composiciones por categoría y pulsa cualquier espacio para verlo en vista ampliada."
-          align="center"
+          align="left"
           headingId="gallery-heading"
         />
 
