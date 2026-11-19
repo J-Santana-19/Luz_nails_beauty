@@ -23,9 +23,23 @@ interface AppProps {
   initialRoute?: '/' | '/admin';
 }
 
+function getBasePath(): string {
+  const rawBase = import.meta.env.BASE_URL || '/';
+  return rawBase === '/' ? '' : rawBase.replace(/\/+$/, '');
+}
+
+function isAdminPath(pathname: string): boolean {
+  const basePath = getBasePath();
+  const relativePath =
+    basePath && pathname.startsWith(basePath)
+      ? pathname.slice(basePath.length) || '/'
+      : pathname;
+  return relativePath.startsWith('/admin');
+}
+
 function resolveInitialRoute(initialRoute?: '/' | '/admin'): '/' | '/admin' {
   if (initialRoute) return initialRoute;
-  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/admin')) {
+  if (typeof window !== 'undefined' && isAdminPath(window.location.pathname)) {
     return '/admin';
   }
   return '/';
@@ -50,7 +64,7 @@ export function App({ initialRoute }: AppProps = {}) {
 
   useEffect(() => {
     const handlePopState = () => {
-      setRoute(window.location.pathname.startsWith('/admin') ? '/admin' : '/');
+      setRoute(isAdminPath(window.location.pathname) ? '/admin' : '/');
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
@@ -59,7 +73,9 @@ export function App({ initialRoute }: AppProps = {}) {
   const navigateTo = (target: '/' | '/admin') => {
     setRoute(target);
     if (typeof window !== 'undefined' && window.history?.pushState) {
-      window.history.pushState({}, '', target);
+      const basePath = getBasePath();
+      const fullTarget = `${basePath}${target}`;
+      window.history.pushState({}, '', fullTarget);
     }
   };
 
