@@ -17,12 +17,9 @@ export function BrandMonogram({ size = 40 }: IconProps) {
       style={{
         width: `${size}px`,
         height: `${size}px`,
-        borderRadius: '9999px',
-        objectFit: 'cover',
-        objectPosition: 'center',
+        objectFit: 'contain',
         display: 'block',
-        backgroundColor: '#000000',
-        border: '1px solid rgba(245, 200, 217, 0.22)',
+        backgroundColor: 'transparent',
         flexShrink: 0,
       }}
     />
