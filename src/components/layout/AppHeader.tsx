@@ -70,6 +70,7 @@ export function AppHeader() {
           </button>
         </div>
       </header>
+      <div className="site-header-spacer" aria-hidden="true" />
 
       {isDrawerOpen ? (
         <div
