@@ -7,7 +7,7 @@ Este documento especifica el funcionamiento de los puntos de contacto hacia What
 ## 1. Configuración del Número Empresarial
 
 - El número de WhatsApp del estudio se almacenará en una variable de entorno configurable (ver [`.env.example`](../.env.example)), en formato internacional **sin el símbolo `+` ni espacios** (ejemplo: `50764600000`).
-- **Estado actual del número oficial:** `PENDIENTE DE CONFIRMACIÓN`.
+- **Estado actual del número oficial:** `50764396576` (configurado como respaldo oficial en `src/services/whatsapp.service.ts` y sobrescribible mediante `PUBLIC_WHATSAPP_NUMBER`).
 
 ---
 

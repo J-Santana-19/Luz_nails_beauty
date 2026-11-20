@@ -1,5 +1,7 @@
 import type { AppointmentFormData } from '../types/catalog';
 
+export const OFFICIAL_WHATSAPP_NUMBER = '50764396576';
+
 export const DEFAULT_WHATSAPP_MESSAGE =
   'Hola, Luz Beauty Studio. Me gustaría obtener información sobre sus servicios.';
 
@@ -13,7 +15,7 @@ export function sanitizePhoneNumber(rawPhone?: string): string {
 
 export function getConfiguredWhatsAppNumber(): string {
   const envPhone = import.meta.env.PUBLIC_WHATSAPP_NUMBER as string | undefined;
-  return sanitizePhoneNumber(envPhone);
+  return sanitizePhoneNumber(envPhone) || OFFICIAL_WHATSAPP_NUMBER;
 }
 
 export function buildAppointmentMessage(data: AppointmentFormData): string {

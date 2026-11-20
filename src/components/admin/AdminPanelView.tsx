@@ -9,6 +9,7 @@ import {
   type AdminGalleryItem,
   type AdminSession,
 } from '../../services/supabase.service';
+import { getConfiguredWhatsAppNumber } from '../../services/whatsapp.service';
 import type { CategorySlug, ServiceCategory } from '../../types/catalog';
 import { BrandMonogram, CloseIcon, MenuIcon } from '../ui/BrandIcons';
 import { ImagePlaceholder } from '../ui/ImagePlaceholder';
@@ -966,8 +967,8 @@ export function AdminPanelView({
                   </div>
                 </div>
                 <span className="admin-status-pill admin-status-pill--hidden">
-                  {import.meta.env.PUBLIC_WHATSAPP_NUMBER
-                    ? 'Configurado'
+                  {getConfiguredWhatsAppNumber()
+                    ? `Configurado (${getConfiguredWhatsAppNumber()})`
                     : 'Pendiente de confirmación'}
                 </span>
               </div>

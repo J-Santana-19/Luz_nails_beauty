@@ -57,6 +57,11 @@ describe('whatsapp.service', () => {
     const url = buildWhatsAppUrl('Hola Luz Beauty!', '+507 6460-1234');
     expect(url).toBe('https://wa.me/50764601234?text=Hola%20Luz%20Beauty!');
   });
+
+  it('usa el número oficial configurado por defecto cuando no se pasa teléfono explícito', () => {
+    const url = buildWhatsAppUrl('Hola Luz Beauty!');
+    expect(url).toBe('https://wa.me/50764396576?text=Hola%20Luz%20Beauty!');
+  });
 });
 
 describe('catalog.service (etapa placeholders)', () => {
