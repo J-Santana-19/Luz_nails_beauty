@@ -66,7 +66,7 @@ export function AppHeader() {
             className="btn btn--primary header-cta"
           >
             <WhatsAppIcon size={18} />
-            WhatsApp
+            Contáctanos
           </a>
 
           <button
