@@ -563,29 +563,32 @@
 @media (min-width: 1024px) {
   .collage-spotlight {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 22px;
+    grid-template-rows: repeat(2, clamp(220px, 21vw, 280px));
+    gap: 20px;
+  }
+
+  .collage-spotlight > div {
+    height: 100%;
+  }
+
+  .collage-spotlight .placeholder-card {
+    height: 100%;
+    aspect-ratio: auto;
   }
 
   .collage-spotlight__slot--c3 {
     order: 0;
-    grid-column: 4 / span 5;
+    grid-column: 5 / span 4;
     grid-row: 1 / span 2;
-    height: 100%;
-  }
-
-  .collage-spotlight__slot--c3 .placeholder-card {
-    height: 100%;
-    aspect-ratio: auto;
-    min-height: 360px;
   }
 
   .collage-spotlight__slot--c1 {
-    grid-column: 1 / span 3;
+    grid-column: 1 / span 4;
     grid-row: 1;
   }
 
   .collage-spotlight__slot--c2 {
-    grid-column: 1 / span 3;
+    grid-column: 1 / span 4;
     grid-row: 2;
   }
 
