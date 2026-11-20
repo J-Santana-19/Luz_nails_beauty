@@ -540,7 +540,7 @@
 .collage-spotlight {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 10px;
   width: 100%;
 }
 
@@ -553,6 +553,10 @@
   order: -1;
 }
 
+.collage-spotlight__slot--c3 .placeholder-card {
+  aspect-ratio: 4 / 5;
+}
+
 .collage-spotlight__slot--c1,
 .collage-spotlight__slot--c2,
 .collage-spotlight__slot--c4,
@@ -560,10 +564,22 @@
   grid-column: span 1;
 }
 
+.collage-spotlight__slot--c1 .placeholder-card,
+.collage-spotlight__slot--c2 .placeholder-card {
+  aspect-ratio: 1 / 1;
+  height: 100%;
+}
+
+.collage-spotlight__slot--c4 .placeholder-card,
+.collage-spotlight__slot--c5 .placeholder-card {
+  aspect-ratio: 4 / 5;
+  height: 100%;
+}
+
 @media (min-width: 1024px) {
   .collage-spotlight {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-template-rows: repeat(6, clamp(72px, 6.5vw, 90px));
+    grid-template-rows: repeat(6, clamp(94px, 8.2vw, 120px));
     gap: 18px;
   }
 
