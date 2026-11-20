@@ -1173,21 +1173,44 @@ button {
 
 .lightbox-media.placeholder-card--has-image {
   aspect-ratio: auto;
-  width: 100%;
-  height: clamp(280px, 54vh, 420px);
-  background-color: rgba(16, 12, 16, 0.72);
-  border: 1px solid rgba(245, 200, 217, 0.14);
-}
-
-@media (min-width: 640px) {
-  .lightbox-media.placeholder-card--has-image {
-    height: clamp(340px, 62vh, 540px);
-  }
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 0;
 }
 
 .lightbox-media.placeholder-card--has-image .placeholder-card__img {
-  object-fit: contain;
+  position: relative;
+  inset: auto;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: clamp(300px, 60vh, 480px);
+  object-fit: cover;
   object-position: center;
+}
+
+@media (min-width: 640px) {
+  .lightbox-media.placeholder-card--has-image .placeholder-card__img {
+    max-height: clamp(360px, 64vh, 560px);
+  }
+}
+
+.lightbox-media.placeholder-card--has-image .placeholder-card__top {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 1;
+}
+
+.lightbox-media.placeholder-card--has-image .placeholder-card__bottom {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 1;
 }
 
 .lightbox-slide {
