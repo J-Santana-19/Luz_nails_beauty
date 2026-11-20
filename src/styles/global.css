@@ -1171,6 +1171,25 @@ button {
   border-radius: var(--radius-md);
 }
 
+.lightbox-media.placeholder-card--has-image {
+  aspect-ratio: auto;
+  width: 100%;
+  height: clamp(280px, 54vh, 420px);
+  background-color: rgba(16, 12, 16, 0.72);
+  border: 1px solid rgba(245, 200, 217, 0.14);
+}
+
+@media (min-width: 640px) {
+  .lightbox-media.placeholder-card--has-image {
+    height: clamp(340px, 62vh, 540px);
+  }
+}
+
+.lightbox-media.placeholder-card--has-image .placeholder-card__img {
+  object-fit: contain;
+  object-position: center;
+}
+
 .lightbox-slide {
   will-change: transform, opacity;
 }

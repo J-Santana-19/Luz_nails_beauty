@@ -81,7 +81,7 @@ export function LightboxModal({
 
         <div className="lightbox-stage">
           <div key={item.id} className={`lightbox-slide lightbox-slide--${direction}`}>
-            <ImagePlaceholder slot={item} theme="dark" />
+            <ImagePlaceholder slot={item} theme="dark" className="lightbox-media" />
           </div>
         </div>
 
