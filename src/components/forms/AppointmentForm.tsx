@@ -2,7 +2,6 @@ import { useState, type FormEvent } from 'react';
 import {
   buildAppointmentMessage,
   buildWhatsAppUrl,
-  getConfiguredWhatsAppNumber,
 } from '../../services/whatsapp.service';
 import type { PreferredSchedule, ServiceCategory } from '../../types/catalog';
 import { WhatsAppIcon } from '../ui/BrandIcons';
@@ -39,13 +38,8 @@ export function AppointmentForm({
   const [specificTime, setSpecificTime] = useState('');
   const [comments, setComments] = useState('');
   const [errors, setErrors] = useState<FormErrors>({});
-  const [generatedPreview, setGeneratedPreview] = useState<{
-    message: string;
-    url: string;
-  } | null>(null);
 
   const today = getTodayIsoDate();
-  const hasConfiguredPhone = Boolean(getConfiguredWhatsAppNumber());
 
   const validate = (): FormErrors => {
     const nextErrors: FormErrors = {};
@@ -96,7 +90,6 @@ export function AppointmentForm({
     });
 
     const url = buildWhatsAppUrl(message);
-    setGeneratedPreview({ message, url });
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
@@ -248,26 +241,6 @@ export function AppointmentForm({
           confirmada automáticamente; te responderemos para confirmar disponibilidad.
         </p>
       </form>
-
-      {generatedPreview ? (
-        <div className="form-preview" role="status" aria-live="polite">
-          <p className="form-preview__title">
-            Solicitud preparada para WhatsApp
-            {!hasConfiguredPhone
-              ? ' (número empresarial pendiente de configurar en .env)'
-              : ''}
-          </p>
-          <pre className="form-preview__message">{generatedPreview.message}</pre>
-          <a
-            href={generatedPreview.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-link"
-          >
-            Abrir enlace de WhatsApp manualmente →
-          </a>
-        </div>
-      ) : null}
     </div>
   );
 }

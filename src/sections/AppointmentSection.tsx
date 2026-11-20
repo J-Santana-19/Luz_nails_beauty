@@ -1,7 +1,5 @@
 import { AppointmentForm } from '../components/forms/AppointmentForm';
-import { ImagePlaceholder } from '../components/ui/ImagePlaceholder';
 import { SectionHeading } from '../components/ui/SectionHeading';
-import { getAppointmentPlaceholders } from '../services/catalog.service';
 import type { ServiceCategory } from '../types/catalog';
 
 interface AppointmentSectionProps {
@@ -9,8 +7,6 @@ interface AppointmentSectionProps {
 }
 
 export function AppointmentSection({ categories }: AppointmentSectionProps) {
-  const [leftSlot, rightOffsetSlot, bottomWideSlot] = getAppointmentPlaceholders();
-
   return (
     <section
       id="solicitar-cita"
@@ -39,21 +35,6 @@ export function AppointmentSection({ categories }: AppointmentSectionProps) {
             <div className="appointment-step">
               <span className="appointment-step__num">3</span>
               <span>Confirmaremos disponibilidad directamente contigo por chat.</span>
-            </div>
-          </div>
-
-          <div
-            className="appointment-triptych"
-            aria-label="Composición editorial del estudio"
-          >
-            <div>
-              <ImagePlaceholder slot={leftSlot} theme="light" />
-            </div>
-            <div className="appointment-triptych__offset">
-              <ImagePlaceholder slot={rightOffsetSlot} theme="light" />
-            </div>
-            <div className="appointment-triptych__wide">
-              <ImagePlaceholder slot={bottomWideSlot} theme="light" />
             </div>
           </div>
         </div>
