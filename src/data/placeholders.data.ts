@@ -179,22 +179,44 @@ const CATEGORY_LABELS: Record<CategorySlug, string> = {
   depilacion: 'Depilación',
 };
 
+const UNAS_SPOTLIGHT_OVERRIDES: Partial<
+  Record<SpotlightSlotId, { title: string; imageUrl: string }>
+> = {
+  'C-02': {
+    title: 'Uñas azul glitter — Uñas',
+    imageUrl: 'images/servicios/manicure/manicure-06.webp',
+  },
+  'C-04': {
+    title: 'Diseño francés almendrado — Uñas',
+    imageUrl: 'images/servicios/manicure/manicure-07.webp',
+  },
+  'C-05': {
+    title: 'Acabado vino brillante — Uñas',
+    imageUrl: 'images/servicios/manicure/manicure-08.webp',
+  },
+};
+
 export const SPOTLIGHT_PLACEHOLDERS: PlaceholderSlot[] = (
   Object.keys(CATEGORY_LABELS) as CategorySlug[]
 ).flatMap((slug) =>
-  SPOTLIGHT_BLUEPRINT.map((blueprint) => ({
-    id: `${slug.toUpperCase()}-${blueprint.slot}`,
-    title: `${CATEGORY_LABELS[slug]} — ${blueprint.label}`,
-    temporaryLabel: blueprint.label,
-    subtitle: blueprint.subtitle,
-    categorySlug: slug,
-    categoryName: CATEGORY_LABELS[slug],
-    aspectRatio: blueprint.ratio,
-    role: blueprint.role,
-    spotlightSlot: blueprint.slot,
-    isPublished: true,
-    imageUrl: null,
-  })),
+  SPOTLIGHT_BLUEPRINT.map((blueprint) => {
+    const unasOverride =
+      slug === 'unas' ? UNAS_SPOTLIGHT_OVERRIDES[blueprint.slot] : undefined;
+
+    return {
+      id: `${slug.toUpperCase()}-${blueprint.slot}`,
+      title: unasOverride?.title ?? `${CATEGORY_LABELS[slug]} — ${blueprint.label}`,
+      temporaryLabel: blueprint.label,
+      subtitle: blueprint.subtitle,
+      categorySlug: slug,
+      categoryName: CATEGORY_LABELS[slug],
+      aspectRatio: blueprint.ratio,
+      role: blueprint.role,
+      spotlightSlot: blueprint.slot,
+      isPublished: true,
+      imageUrl: unasOverride?.imageUrl ?? null,
+    };
+  }),
 );
 
 export const APPOINTMENT_PLACEHOLDERS: PlaceholderSlot[] = [
@@ -208,7 +230,7 @@ export const APPOINTMENT_PLACEHOLDERS: PlaceholderSlot[] = [
     aspectRatio: '3:4',
     role: 'secondary',
     isPublished: true,
-    imageUrl: 'images/servicios/manicure/manicure-03.webp',
+    imageUrl: null,
   },
   {
     id: 'PH-CTA-02',
@@ -232,6 +254,6 @@ export const APPOINTMENT_PLACEHOLDERS: PlaceholderSlot[] = [
     aspectRatio: '16:9',
     role: 'panoramic',
     isPublished: true,
-    imageUrl: 'images/servicios/manicure/manicure-05.webp',
+    imageUrl: null,
   },
 ];

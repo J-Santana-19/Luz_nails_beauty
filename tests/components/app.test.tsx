@@ -29,8 +29,8 @@ describe('Luz Beauty Studio — Primera Etapa Visual (Placeholders y Collages)',
     const mainImages = Array.from(container.querySelectorAll('main img')).map((img) =>
       img.getAttribute('src'),
     );
-    expect(mainImages).toHaveLength(5);
-    expect(new Set(mainImages).size).toBe(5);
+    expect(mainImages).toHaveLength(3);
+    expect(new Set(mainImages).size).toBe(3);
     // El logotipo oficial de la marca sí se muestra en header y footer
     expect(screen.getAllByAltText('Logotipo Luz Beauty Studio').length).toBeGreaterThanOrEqual(2);
   });
