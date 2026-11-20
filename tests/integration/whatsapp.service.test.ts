@@ -7,6 +7,8 @@ import {
 import {
   buildAppointmentMessage,
   buildWhatsAppUrl,
+  formatDateInSpanish,
+  formatTime12Hour,
   sanitizePhoneNumber,
 } from '../../src/services/whatsapp.service';
 
@@ -27,7 +29,7 @@ describe('whatsapp.service', () => {
         'Me gustaría solicitar información sobre una cita.',
         '',
         'Servicio de interés: Uñas',
-        'Fecha deseada: 2026-12-10',
+        'Fecha deseada: 10 de diciembre de 2026',
         'Horario preferido: Mañana',
         'Comentarios adicionales:',
         'Diseño francés elegante',
@@ -47,8 +49,18 @@ describe('whatsapp.service', () => {
       specificTime: '14:30',
     });
 
-    expect(message).toContain('Horario preferido: Hora específica (14:30)');
+    expect(message).toContain('Fecha deseada: 15 de diciembre de 2026');
+    expect(message).toContain('Horario preferido: Hora específica (2:30 PM)');
     expect(message).toContain('Comentarios adicionales:\nNinguno');
+  });
+
+  it('formatea fechas ISO a español y horas de 24h a 12h AM/PM', () => {
+    expect(formatDateInSpanish('2026-11-21')).toBe('21 de noviembre de 2026');
+    expect(formatDateInSpanish('2026-01-05')).toBe('5 de enero de 2026');
+    expect(formatTime12Hour('17:30')).toBe('5:30 PM');
+    expect(formatTime12Hour('00:15')).toBe('12:15 AM');
+    expect(formatTime12Hour('12:00')).toBe('12:00 PM');
+    expect(formatTime12Hour('09:05')).toBe('9:05 AM');
   });
 
   it('limpia el número telefónico y codifica el mensaje con encodeURIComponent', () => {
