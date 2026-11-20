@@ -563,7 +563,7 @@
 @media (min-width: 1024px) {
   .collage-spotlight {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-template-rows: repeat(2, clamp(220px, 21vw, 280px));
+    grid-template-rows: clamp(200px, 19vw, 255px) clamp(245px, 23vw, 310px);
     gap: 20px;
   }
 
@@ -578,17 +578,17 @@
 
   .collage-spotlight__slot--c3 {
     order: 0;
-    grid-column: 5 / span 4;
+    grid-column: 4 / span 5;
     grid-row: 1 / span 2;
   }
 
   .collage-spotlight__slot--c1 {
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 3;
     grid-row: 1;
   }
 
   .collage-spotlight__slot--c2 {
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 3;
     grid-row: 2;
   }
 
