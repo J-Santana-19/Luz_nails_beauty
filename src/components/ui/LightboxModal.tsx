@@ -1,8 +1,10 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { buildWhatsAppUrl } from '../../services/whatsapp.service';
 import type { PlaceholderSlot } from '../../types/catalog';
 import { CloseIcon, WhatsAppIcon } from './BrandIcons';
 import { ImagePlaceholder } from './ImagePlaceholder';
+
+type TransitionDirection = 'initial' | 'next' | 'prev';
 
 interface LightboxModalProps {
   item: PlaceholderSlot | null;
@@ -17,18 +19,33 @@ export function LightboxModal({
   onPrev,
   onNext,
 }: LightboxModalProps) {
+  const [direction, setDirection] = useState<TransitionDirection>('initial');
+
+  const handlePrev = useCallback(() => {
+    setDirection('prev');
+    onPrev();
+  }, [onPrev]);
+
+  const handleNext = useCallback(() => {
+    setDirection('next');
+    onNext();
+  }, [onNext]);
+
   useEffect(() => {
-    if (!item) return undefined;
+    if (!item) {
+      setDirection('initial');
+      return undefined;
+    }
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose();
-      if (event.key === 'ArrowLeft') onPrev();
-      if (event.key === 'ArrowRight') onNext();
+      if (event.key === 'ArrowLeft') handlePrev();
+      if (event.key === 'ArrowRight') handleNext();
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [item, onClose, onPrev, onNext]);
+  }, [item, onClose, handlePrev, handleNext]);
 
   if (!item) return null;
 
@@ -46,7 +63,7 @@ export function LightboxModal({
     >
       <div className="lightbox-dialog" onClick={(event) => event.stopPropagation()}>
         <div className="lightbox-header">
-          <div>
+          <div key={`header-${item.id}`} className="lightbox-header__info">
             <span className="section-heading__eyebrow">{item.categoryName}</span>
             <h3 id="lightbox-title" className="service-card__title" style={{ color: '#FFFFFF' }}>
               {item.title}
@@ -62,14 +79,18 @@ export function LightboxModal({
           </button>
         </div>
 
-        <ImagePlaceholder slot={item} theme="dark" />
+        <div className="lightbox-stage">
+          <div key={item.id} className={`lightbox-slide lightbox-slide--${direction}`}>
+            <ImagePlaceholder slot={item} theme="dark" />
+          </div>
+        </div>
 
         <div className="lightbox-footer">
           <div className="lightbox-nav">
-            <button type="button" className="btn btn--outline-light" onClick={onPrev}>
+            <button type="button" className="btn btn--outline-light" onClick={handlePrev}>
               ← Anterior
             </button>
-            <button type="button" className="btn btn--outline-light" onClick={onNext}>
+            <button type="button" className="btn btn--outline-light" onClick={handleNext}>
               Siguiente →
             </button>
           </div>

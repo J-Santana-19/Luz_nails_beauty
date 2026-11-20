@@ -1114,6 +1114,7 @@ button {
   align-items: center;
   justify-content: center;
   padding: 20px;
+  animation: lightboxFadeIn 220ms ease-out;
 }
 
 .lightbox-dialog {
@@ -1129,6 +1130,7 @@ button {
   gap: 18px;
   max-height: 92vh;
   overflow-y: auto;
+  animation: lightboxDialogIn 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .lightbox-header {
@@ -1136,6 +1138,10 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+}
+
+.lightbox-header__info {
+  animation: lightboxTextIn 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .lightbox-close {
@@ -1148,6 +1154,37 @@ button {
   border: 1px solid rgba(245, 200, 217, 0.3);
   background: transparent;
   color: var(--color-white);
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-base);
+}
+
+.lightbox-close:hover {
+  background-color: rgba(245, 200, 217, 0.14);
+  border-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.lightbox-stage {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.lightbox-slide {
+  will-change: transform, opacity;
+}
+
+.lightbox-slide--initial {
+  animation: lightboxSlideInitial 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lightbox-slide--next {
+  animation: lightboxSlideFromRight 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lightbox-slide--prev {
+  animation: lightboxSlideFromLeft 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .lightbox-footer {
@@ -1161,6 +1198,74 @@ button {
 .lightbox-nav {
   display: flex;
   gap: 10px;
+}
+
+.lightbox-nav .btn:active {
+  transform: scale(0.96);
+}
+
+@keyframes lightboxFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lightboxDialogIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes lightboxTextIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lightboxSlideInitial {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes lightboxSlideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(28px) scale(0.975);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes lightboxSlideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-28px) scale(0.975);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
 }
 
 /* Botón Flotante de WhatsApp */
