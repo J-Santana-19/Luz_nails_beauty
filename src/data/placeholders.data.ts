@@ -208,7 +208,7 @@ export const APPOINTMENT_PLACEHOLDERS: PlaceholderSlot[] = [
     aspectRatio: '3:4',
     role: 'secondary',
     isPublished: true,
-    imageUrl: null,
+    imageUrl: 'images/servicios/manicure/manicure-03.webp',
   },
   {
     id: 'PH-CTA-02',
@@ -232,6 +232,6 @@ export const APPOINTMENT_PLACEHOLDERS: PlaceholderSlot[] = [
     aspectRatio: '16:9',
     role: 'panoramic',
     isPublished: true,
-    imageUrl: null,
+    imageUrl: 'images/servicios/manicure/manicure-05.webp',
   },
 ];
