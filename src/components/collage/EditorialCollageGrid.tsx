@@ -34,8 +34,14 @@ export function EditorialCollageGrid({
   layoutVariant,
   onSelectItem,
 }: EditorialCollageGridProps) {
+  const categoryModifier =
+    layoutVariant === 'category-spotlight' && items[0]?.categorySlug
+      ? ` collage-spotlight--${items[0].categorySlug}`
+      : '';
   const containerClass =
-    layoutVariant === 'magazine-spread' ? 'collage-magazine' : 'collage-spotlight';
+    layoutVariant === 'magazine-spread'
+      ? 'collage-magazine'
+      : `collage-spotlight${categoryModifier}`;
 
   return (
     <div className={containerClass} data-testid={`collage-${layoutVariant}`}>
